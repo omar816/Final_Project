@@ -1,3 +1,61 @@
 <resources>
-    <string name="app_name">Final_Project</string>
+    <string name="app_name">Practice_final</string>
+
+    <!-- Strings for LOGIN -->
+    <string name="user">Username</string>
+    <string name="pass">Password</string>
+    <string name="login">Log-in</string>
+    <string name="submit">Submit</string>
+    <string name="signUp">Sign Up</string>
+    <string name="noAccount">No account yet? Sign up here!</string>
+
+    <!-- Strings for SIGNUP -->
+    <string name="firstName">First Name</string>
+    <string name="confirm">Confirm Password</string>
+    <!--
+    <string name="user">Username</string>
+    <string name="pass">Password</string>
+    <string name="login">Log-in</string>
+    <string name="submit">Submit</string>
+    -->
+
+    <!-- Strings for MAIN MENU -->
+    <string name="main">Main Menu</string>
+    <string name="menu1">Begin Learning</string>
+    <string name="menu2">Profile</string>
+    <string name="menu3">Compare</string>
+    <string name="menu4">Settings</string>
+    <string name="menu5">Insert name here</string>
+
+
+    <!-- Strings for PROFILE -->
+    <string name="prog">Progress</string>
+
+    <!-- Strings for ACTIVITY LIST -->
+    <string name="activityTitle">Pick an activity</string>
+    <string name="activity1">HTML</string>
+    <string name="activity2">CSS</string>
+    <string name="activity3">Javascript</string>
+    <string name="activity4">Java</string>
+    <string name="activity5">C++</string>
+    <string name="activity6">Python</string>
+
+    <!-- Strings for HTML ACTIVITY -->
+    <string name="title1">HTML</string>
+    <string name="concept">Concept</string>
+    <string name="quiz">Quiz</string>
+    <string name="stats">Statistics</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_profile">ProfileActivity</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="title_activity_activity_list">ActivityList</string>
+    <string name="title_activity_main_menu">MainMenu</string>
+    <string name="title_activity_sign_up">SignUpActivity</string>
+    <string name="emptyString" />
+    <string name="title_activity_html">HtmlActivity</string>
+    <string name="title_activity_html_content">HtmlContent</string>
+    <string name="title_activity_html_quiz">HtmlQuiz</string>
+    <string name="title_activity_html_stats">HtmlStats</string>
 </resources>

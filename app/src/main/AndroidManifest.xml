@@ -1,20 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.a100523629.final_project">
+    package="com.example.omar.practice_final" >
 
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
-        android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name=".LogIn"
+            android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name=".ProfileActivity"
+            android:label="@string/title_activity_profile" >
+        </activity>
+        <activity
+            android:name=".ActivityList"
+            android:label="@string/title_activity_activity_list" >
+        </activity>
+        <activity
+            android:name=".MainMenu"
+            android:label="@string/title_activity_main_menu" >
+        </activity>
+        <activity
+            android:name=".SignUpActivity"
+            android:label="@string/title_activity_sign_up" >
+        </activity>
+        <activity
+            android:name=".HtmlFiles.HtmlActivity"
+            android:label="@string/title_activity_html" >
+        </activity>
+        <activity
+            android:name=".HtmlFiles.HtmlContent"
+            android:label="@string/title_activity_html_content" >
+        </activity>
+        <activity
+            android:name=".HtmlFiles.HtmlQuiz"
+            android:label="@string/title_activity_html_quiz" >
+        </activity>
+        <activity
+            android:name=".HtmlFiles.HtmlStats"
+            android:label="@string/title_activity_html_stats" >
         </activity>
     </application>
 
