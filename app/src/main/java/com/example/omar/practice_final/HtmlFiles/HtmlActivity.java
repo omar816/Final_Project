@@ -1,8 +1,9 @@
 package com.example.omar.practice_final.HtmlFiles;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
+import android.net.Uri;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -13,7 +14,8 @@ public class HtmlActivity extends AppCompatActivity {
 
     public void clickFunction(View view) {
         if (view.getId() == R.id.conceptButton) {
-            Intent i = new Intent(getApplicationContext(), HtmlContent.class);
+            Uri uriURL = Uri.parse("https://en.wikipedia.org/wiki/HTML");
+            Intent i = new Intent(Intent.ACTION_VIEW, uriURL);
             startActivity(i);
         }
         if (view.getId() == R.id.quizButton) {
