@@ -14,6 +14,7 @@ public class ActivityList extends AppCompatActivity {
     public void onClick(View view) {
         if(view.getId() == R.id.htmlButton) {
             Intent i = new Intent(getApplicationContext(), HtmlActivity.class);
+            i.putExtra("Topic", "HTML");
             startActivity(i);
         }
         /*if(view.getId() == R.id.htmlButton) {

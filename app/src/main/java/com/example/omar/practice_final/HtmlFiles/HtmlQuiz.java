@@ -16,7 +16,7 @@ import com.example.omar.practice_final.R;
 import java.util.Random;
 
 public class HtmlQuiz extends AppCompatActivity {
-
+    String topic;
     Button answer1, answer2, answer3, answer4;
 
     TextView score, question;
@@ -25,7 +25,8 @@ public class HtmlQuiz extends AppCompatActivity {
 
     private String mAnswer;
     private int mScore=0;
-    private int mQuestionLength = mQuestions.mQuestions.length;
+    private int mQuestionLength;
+    int quizNumber=0;
 
     Random r;
 
@@ -33,7 +34,16 @@ public class HtmlQuiz extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_html_quiz);
+        topic = getIntent().getStringExtra("Topic");
 
+        switch(topic){
+            case "HTML":
+                quizNumber=0;
+                break;
+            case "Java":
+                quizNumber=1;
+        }
+        mQuestionLength= mQuestions.mQuestions[quizNumber].length;
         r = new Random();
 
         answer1 = (Button) findViewById(R.id.answer1);
@@ -106,13 +116,13 @@ public class HtmlQuiz extends AppCompatActivity {
     }
 
     private  void updateQuestion(int num) {
-        question.setText(mQuestions.getQuestion(num));
-        answer1.setText(mQuestions.getChoice1(num));
-        answer2.setText(mQuestions.getChoice2(num));
-        answer3.setText(mQuestions.getChoice3(num));
-        answer4.setText(mQuestions.getChoice4(num));
+        question.setText(mQuestions.getQuestion(quizNumber, num));
+        answer1.setText(mQuestions.getChoice1(quizNumber, num));
+        answer2.setText(mQuestions.getChoice2(quizNumber, num));
+        answer3.setText(mQuestions.getChoice3(quizNumber, num));
+        answer4.setText(mQuestions.getChoice4(quizNumber, num));
 
-        mAnswer = mQuestions.getCorrectAnswers(num);
+        mAnswer = mQuestions.getCorrectAnswers(quizNumber, num);
 
     }
 
@@ -126,7 +136,9 @@ public class HtmlQuiz extends AppCompatActivity {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 finish();
-                                startActivity(new Intent(getApplicationContext(), HtmlQuiz.class));
+                                Intent i = new Intent(getApplicationContext(), HtmlQuiz.class);
+                                i.putExtra("Topic", topic);
+                                startActivity(i);
                             }
                         })
                 .setNegativeButton("EXIT",

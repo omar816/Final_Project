@@ -58,4 +58,5 @@
     <string name="title_activity_html_content">HtmlContent</string>
     <string name="title_activity_html_quiz">HtmlQuiz</string>
     <string name="title_activity_html_stats">HtmlStats</string>
+    <string name="topic">Topic</string>
 </resources>
