@@ -38,11 +38,28 @@ public class HtmlQuiz extends AppCompatActivity {
 
         switch(topic){
             case "HTML":
-                quizNumber=0;
+                quizNumber=1;
+                break;
+            case "CSS":
+                quizNumber=2;
+                break;
+            case "JavaScript":
+                quizNumber=3;
                 break;
             case "Java":
-                quizNumber=1;
+                quizNumber=4;
+                break;
+            case "C++":
+                quizNumber=5;
+                break;
+            case "Python":
+                quizNumber=6;
+                break;
+            default:
+                quizNumber=0;
+                break;
         }
+
         mQuestionLength= mQuestions.mQuestions[quizNumber].length;
         r = new Random();
 

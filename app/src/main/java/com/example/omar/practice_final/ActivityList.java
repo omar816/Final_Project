@@ -12,33 +12,29 @@ import com.example.omar.practice_final.HtmlFiles.HtmlActivity;
 public class ActivityList extends AppCompatActivity {
 
     public void onClick(View view) {
-        if(view.getId() == R.id.htmlButton) {
-            Intent i = new Intent(getApplicationContext(), HtmlActivity.class);
-            i.putExtra("Topic", "HTML");
-            startActivity(i);
-        }
-        /*if(view.getId() == R.id.htmlButton) {
-            Intent i = new Intent(getApplicationContext(), HtmlActivity.class);
-            startActivity(i);
-        }
-        if(view.getId() == R.id.htmlButton) {
-            Intent i = new Intent(getApplicationContext(), HtmlActivity.class);
-            startActivity(i);
-        }
-        if(view.getId() == R.id.htmlButton) {
-            Intent i = new Intent(getApplicationContext(), HtmlActivity.class);
-            startActivity(i);
-        }
-        if(view.getId() == R.id.htmlButton) {
-            Intent i = new Intent(getApplicationContext(), HtmlActivity.class);
-            startActivity(i);
-        }
-        if(view.getId() == R.id.htmlButton) {
-            Intent i = new Intent(getApplicationContext(), HtmlActivity.class);
-            startActivity(i);
-        }*/
+        Intent i = new Intent(getApplicationContext(), HtmlActivity.class);
 
-
+        switch(view.getId()){
+            case R.id.htmlButton:
+                i.putExtra("Topic", "HTML");
+                break;
+            case R.id.javaButton:
+                i.putExtra("Topic", "Java");
+                break;
+            case R.id.jsButton:
+                i.putExtra("Topic", "JavaScript");
+                break;
+            case R.id.cssButton:
+                i.putExtra("Topic", "CSS");
+                break;
+            case R.id.cppButton:
+                i.putExtra("Topic", "C++");
+                break;
+            case R.id.pythonButton:
+                i.putExtra("Topic", "Python");
+                break;
+        }
+        startActivity(i);
     }
 
     @Override
