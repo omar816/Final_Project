@@ -21,8 +21,20 @@ public class HtmlActivity extends AppCompatActivity {
                 case "HTML":
                     urlString= "https://en.wikipedia.org/wiki/HTML";
                     break;
+                case "CSS":
+                    urlString ="https://en.wikipedia.org/wiki/Cascading_Style_Sheets";
+                    break;
+                case "JavaScript":
+                    urlString ="https://en.wikipedia.org/wiki/JavaScript";
+                    break;
                 case "Java":
                     urlString ="https://en.wikipedia.org/wiki/Java_(programming_language)";
+                    break;
+                case "C++":
+                    urlString ="https://en.wikipedia.org/wiki/C%2B%2B";
+                    break;
+                case "Python":
+                    urlString ="https://en.wikipedia.org/wiki/Python_(programming_language)";
                     break;
                 default:
                     urlString = "https://www.google.ca/";
