@@ -125,6 +125,7 @@ public class HtmlQuiz extends AppCompatActivity {
                         new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
+                                finish();
                                 startActivity(new Intent(getApplicationContext(), HtmlQuiz.class));
                             }
                         })
@@ -132,7 +133,8 @@ public class HtmlQuiz extends AppCompatActivity {
                         new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-                                startActivity(new Intent(getApplicationContext(), HtmlActivity.class));
+                                finish();
+
                             }
                         });
         AlertDialog alertDialog = alertDialogBuilder.create();
