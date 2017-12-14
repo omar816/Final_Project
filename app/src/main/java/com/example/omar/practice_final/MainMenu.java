@@ -8,13 +8,16 @@ import android.view.View;
 import android.widget.TextView;
 
 public class MainMenu extends AppCompatActivity {
+    String userx;
 
     public void beginLearning(View view) {
         Intent i = new Intent(getApplicationContext(), ActivityList.class);
+        i.putExtra("Username", userx);
         startActivity(i);
     }
     public void profile(View view) {
         Intent i = new Intent(getApplicationContext(), ProfileActivity.class);
+        i.putExtra("Username", userx);
         startActivity(i);
     }
     @Override
@@ -22,7 +25,7 @@ public class MainMenu extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_menu);
 
-        String userx = getIntent().getStringExtra("Username");
+        userx = getIntent().getStringExtra("Username");
         TextView tv = (TextView)findViewById(R.id.TVusername);
         tv.setText(userx);
     }

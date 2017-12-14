@@ -39,6 +39,13 @@ public class SignUpActivity extends AppCompatActivity {
                 c.setPass(passStr);
 
                 helper.insertContact(c);
+                helper.createTopicRecord("HTML", unameStr);
+                helper.createTopicRecord("CSS", unameStr);
+                helper.createTopicRecord("JavaScript", unameStr);
+                helper.createTopicRecord("Java", unameStr);
+                helper.createTopicRecord("Cpp", unameStr);
+                helper.createTopicRecord("Python", unameStr);
+
 
                 Toast accptMsg = Toast.makeText(getApplicationContext(), R.string.infoAccepted, Toast.LENGTH_SHORT);
                 accptMsg.show();

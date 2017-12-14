@@ -18,9 +18,11 @@ public class DatabaseHelper extends SQLiteOpenHelper{
 
     SQLiteDatabase db;
 
-    private static final String TABLE_CREATE = "create table contacts " +
+    private static final String USER_TABLE_CREATE = "create table contacts " +
             "(id integer primary key not null , " +
             "name text not null , uname text not null , pass text not null);";
+
+
 
     public DatabaseHelper(Context context)
     {
@@ -29,7 +31,7 @@ public class DatabaseHelper extends SQLiteOpenHelper{
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL(TABLE_CREATE);
+        db.execSQL(USER_TABLE_CREATE);
         this.db = db;
     }
 
@@ -47,9 +49,71 @@ public class DatabaseHelper extends SQLiteOpenHelper{
         values.put(COLUMN_UNAME, c.getUname());
         values.put(COLUMN_PASS, c.getPass());
 
+
         db.insert(TABLE_NAME, null, values);
         db.close();
 
+    }
+
+    public void createTopicRecord(String topic, String username){
+        db = this.getWritableDatabase();
+        String recordName = username+topic;
+        String TOPIC_RECORD_TABLE_CREATE = "create table " + recordName +
+                "(attempt integer not null, score integer not null, total integer not null);";
+        System.out.println("created " + recordName);
+
+        db.execSQL(TOPIC_RECORD_TABLE_CREATE);
+        db.close();
+        insertRecord(topic,username, 0, 1);
+    }
+
+    public void insertRecord(String topic, String username, int score, int total){
+        db = this.getWritableDatabase();
+        String recordName = username+topic;
+        ContentValues values = new ContentValues();
+
+        String query = "select * from " + recordName;
+        Cursor cursor = db.rawQuery(query, null);
+        int count = cursor.getCount();
+
+        values.put("attempt",count);
+        values.put("score", score);
+        values.put("total", total);
+        db.insert(recordName, null, values);
+        db.close();
+    }
+
+    public String getRecord(String topic, String username){
+        String result= "";
+        db = this.getReadableDatabase();
+        String recordName= username+topic;
+        String query = "select attempt, score from " +recordName;
+        Cursor cursor = db.rawQuery(query, null);
+        while(cursor.moveToNext()){
+            result+= "Attempt: " + cursor.getInt(0);
+            result+= " Score: " + cursor.getInt(1) + "\n";
+        }
+        db.close();
+        return result;
+    }
+
+    public int[] getTopScore(String topic, String username){
+        int result[] ={0,0};
+        String tableName = username+topic;
+        db = this.getReadableDatabase();
+        String query = "select score, total from " + tableName;
+        Cursor cursor = db.rawQuery(query, null);
+
+        while(cursor.moveToNext()){
+            result[1] = cursor.getInt(1);
+            if (result[0]<cursor.getInt(0)){
+                result[0] = cursor.getInt(0);
+
+            }
+        }
+
+        db.close();
+        return result;
     }
 
     public String searchPass(String uname)
@@ -62,7 +126,7 @@ public class DatabaseHelper extends SQLiteOpenHelper{
         if(cursor.moveToFirst()){
             do{
                 a = cursor.getString(0);
-
+                System.out.println(a);
                 if(a.equals(uname))
                 {
                     b = cursor.getString(1);

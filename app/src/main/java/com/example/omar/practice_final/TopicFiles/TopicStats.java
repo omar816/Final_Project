@@ -4,15 +4,25 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 
+import com.example.omar.practice_final.DatabaseHelper;
 import com.example.omar.practice_final.R;
 
 public class TopicStats extends AppCompatActivity {
+    String topic;
+    String username;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_html_stats);
+        topic = getIntent().getStringExtra("Topic");
+        username = getIntent().getStringExtra("Username");
+        DatabaseHelper helper = new DatabaseHelper(this);
+        String stats =  "Top Score: " + helper.getTopScore(topic,username)[0]
+                        + "\n\nHistory: \n"+helper.getRecord(topic, username);
+        ((TextView)findViewById(R.id.textStats)).setText(stats);
     }
 
     @Override

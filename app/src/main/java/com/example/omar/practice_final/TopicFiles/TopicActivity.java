@@ -7,13 +7,16 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.example.omar.practice_final.DatabaseHelper;
+import com.example.omar.practice_final.ProgressUpdater;
 import com.example.omar.practice_final.R;
 
 public class TopicActivity extends AppCompatActivity {
     String topic;
-
+    String username;
     public void clickFunction(View view) {
         String urlString="";
         if (view.getId() == R.id.conceptButton) {
@@ -30,7 +33,7 @@ public class TopicActivity extends AppCompatActivity {
                 case "Java":
                     urlString ="https://en.wikipedia.org/wiki/Java_(programming_language)";
                     break;
-                case "C++":
+                case "Cpp":
                     urlString ="https://en.wikipedia.org/wiki/C%2B%2B";
                     break;
                 case "Python":
@@ -45,13 +48,17 @@ public class TopicActivity extends AppCompatActivity {
             startActivity(i);
         }
         if (view.getId() == R.id.quizButton) {
+            finish();
             Intent i = new Intent(getApplicationContext(), TopicQuiz.class);
             i.putExtra("Topic", topic);
+            i.putExtra("Username", getIntent().getStringExtra("Username"));
             startActivity(i);
+
         }
         if (view.getId() == R.id.statButton) {
             Intent i = new Intent(getApplicationContext(), TopicStats.class);
             i.putExtra("Topic", topic);
+            i.putExtra("Username", username);
             startActivity(i);
         }
     }
@@ -59,10 +66,16 @@ public class TopicActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        DatabaseHelper helper = new DatabaseHelper(this);
         topic = getIntent().getStringExtra("Topic");
+        username = getIntent().getStringExtra("Username");
         setContentView(R.layout.activity_html);
         TextView topicText = (TextView)findViewById(R.id.topicText);
         topicText.setText(topic);
+        ProgressBar progressBar=(ProgressBar)findViewById(R.id.progressBar); // initiate the progress bar
+        ProgressUpdater progressUpdater = new ProgressUpdater();
+        progressUpdater.updateProgressBar(progressBar,helper,topic, username);
+        helper.close();
     }
 
     @Override

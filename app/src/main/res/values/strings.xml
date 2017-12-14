@@ -76,4 +76,6 @@
     <string name="gameOver">Game over! Your score is %d</string>
     <string name="newGame">New Game</string>
     <string name="exit">Exit</string>
+    <string name="tempstats">your stats here</string>
+    <string name="win">Perfect Score!!!</string>
 </resources>

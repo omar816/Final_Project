@@ -4,14 +4,41 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 
 public class ProfileActivity extends AppCompatActivity {
-
+    String username;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
-        //TODO: read in progress values and update bars
+        username = getIntent().getStringExtra("Username");
+        ((TextView)findViewById(R.id.textUsername)).setText(username);
+        DatabaseHelper helper = new DatabaseHelper(this);
+        ProgressUpdater progressUpdater = new ProgressUpdater();
+
+
+
+
+        ProgressBar progressBar=(ProgressBar)findViewById(R.id.progressBarHTML);
+        progressUpdater.updateProgressBar(progressBar,helper,"HTML", username);
+
+         progressBar=(ProgressBar)findViewById(R.id.progressBarCSS);
+        progressUpdater.updateProgressBar(progressBar,helper,"CSS", username);
+
+         progressBar=(ProgressBar)findViewById(R.id.progressBarJS);
+        progressUpdater.updateProgressBar(progressBar,helper,"JavaScript", username);
+
+         progressBar=(ProgressBar)findViewById(R.id.progressBarJava);
+        progressUpdater.updateProgressBar(progressBar,helper,"Java", username);
+
+        progressBar=(ProgressBar)findViewById(R.id.progressBarCpp);
+        progressUpdater.updateProgressBar(progressBar,helper,"Cpp", username);
+
+        progressBar=(ProgressBar)findViewById(R.id.progressBarPython);
+        progressUpdater.updateProgressBar(progressBar,helper,"Python", username);
+        helper.close();
     }
 
     @Override

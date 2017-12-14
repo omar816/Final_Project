@@ -10,16 +10,20 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.example.omar.practice_final.DatabaseHelper;
 import com.example.omar.practice_final.R;
 
 import java.util.Random;
 
 public class TopicQuiz extends AppCompatActivity {
-    String topic;
+    String topic, username;
     Button answer1, answer2, answer3, answer4;
 
     TextView score, question;
+    String questionsDone;
+    int qnum;
 
     private TopicQuizQuestions mQuestions = new TopicQuizQuestions();
 
@@ -35,7 +39,9 @@ public class TopicQuiz extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_html_quiz);
         topic = getIntent().getStringExtra("Topic");
-
+        username = getIntent().getStringExtra("Username");
+        questionsDone = "";
+        qnum=0;
         switch(topic){
             case "HTML":
                 quizNumber=1;
@@ -49,7 +55,7 @@ public class TopicQuiz extends AppCompatActivity {
             case "Java":
                 quizNumber=4;
                 break;
-            case "C++":
+            case "Cpp":
                 quizNumber=5;
                 break;
             case "Python":
@@ -72,16 +78,19 @@ public class TopicQuiz extends AppCompatActivity {
         question = findViewById(R.id.question);
 
         score.setText(getString(R.string.score_and_value, mScore));
-        updateQuestion(r.nextInt(mQuestionLength));
+
+        while(questionsDone.contains(String.valueOf(qnum))) {
+            qnum = r.nextInt(mQuestionLength);
+        }
+        questionsDone+= " " + qnum;
+        updateQuestion(qnum);
 
         answer1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 if(answer1.getText() == mAnswer){
-                    mScore++;
-                    score.setText(getString(R.string.score_and_value, mScore));
-                    updateQuestion(r.nextInt(mQuestionLength));
+                    endQuestion();
                 }else{
                     gameover();
                 }
@@ -93,9 +102,7 @@ public class TopicQuiz extends AppCompatActivity {
             public void onClick(View v) {
 
                 if(answer2.getText() == mAnswer){
-                    mScore++;
-                    score.setText(getString(R.string.score_and_value, mScore));
-                    updateQuestion(r.nextInt(mQuestionLength));
+                    endQuestion();
                 }else{
                     gameover();
                 }
@@ -107,9 +114,7 @@ public class TopicQuiz extends AppCompatActivity {
             public void onClick(View v) {
 
                 if(answer3.getText() == mAnswer){
-                    mScore++;
-                    score.setText(getString(R.string.score_and_value, mScore));
-                    updateQuestion(r.nextInt(mQuestionLength));
+                    endQuestion();
                 }else{
                     gameover();
                 }
@@ -121,9 +126,7 @@ public class TopicQuiz extends AppCompatActivity {
             public void onClick(View v) {
 
                 if(answer4.getText() == mAnswer){
-                    mScore++;
-                    score.setText(getString(R.string.score_and_value, mScore));
-                    updateQuestion(r.nextInt(mQuestionLength));
+                    endQuestion();
                 }else{
                     gameover();
                 }
@@ -143,7 +146,32 @@ public class TopicQuiz extends AppCompatActivity {
 
     }
 
+    private void endQuestion(){
+        mScore++;
+        if (mScore>=mQuestionLength){
+            Toast winMsg = Toast.makeText(getApplicationContext(),
+                    R.string.win, Toast.LENGTH_LONG);
+            winMsg.show();
+            gameover();
+        }else{
+            score.setText(getString(R.string.score_and_value, mScore));
+            while(questionsDone.contains(String.valueOf(qnum))) {
+                qnum = r.nextInt(mQuestionLength);
+            }
+            questionsDone+= " " + qnum;
+            updateQuestion(qnum);
+        }
+    }
+
+    private void checkWin(){
+
+    }
+
     private void gameover(){
+        DatabaseHelper helper = new DatabaseHelper(this);
+        helper.insertRecord(topic,username, mScore, mQuestionLength);
+        String x = helper.getRecord(topic,username);
+        System.out.println(x);
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(TopicQuiz.this);
         alertDialogBuilder
                 .setMessage(getString(R.string.gameOver, mScore))
@@ -155,6 +183,7 @@ public class TopicQuiz extends AppCompatActivity {
                                 finish();
                                 Intent i = new Intent(getApplicationContext(), TopicQuiz.class);
                                 i.putExtra("Topic", topic);
+                                i.putExtra("Username", username);
                                 startActivity(i);
                             }
                         })
@@ -163,6 +192,10 @@ public class TopicQuiz extends AppCompatActivity {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 finish();
+                                Intent i = new Intent(getApplicationContext(), TopicActivity.class);
+                                i.putExtra("Topic", topic);
+                                i.putExtra("Username", username);
+                                startActivity(i);
 
                             }
                         });

@@ -115,7 +115,7 @@ public class TopicQuizQuestions {
                 "Object oriented programming"
             },
             {   //Python
-                    "Implicit is better than explicit?",
+                    "Implicit is better than explicit",
                     "The British comedy group, Monty Python"
             }
     };

@@ -28,12 +28,13 @@ public class ActivityList extends AppCompatActivity {
                 i.putExtra("Topic", "CSS");
                 break;
             case R.id.cppButton:
-                i.putExtra("Topic", "C++");
+                i.putExtra("Topic", "Cpp");
                 break;
             case R.id.pythonButton:
                 i.putExtra("Topic", "Python");
                 break;
         }
+        i.putExtra("Username", getIntent().getStringExtra("Username"));
         startActivity(i);
     }
 
