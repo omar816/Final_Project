@@ -29,7 +29,7 @@ public class LogIn extends AppCompatActivity {
                 startActivity(i);
             } else {
                 Toast accptMsg = Toast.makeText(getApplicationContext(),
-                        "INVALID LOGIN CREDENTIALS!", Toast.LENGTH_SHORT);
+                        R.string.badLogin, Toast.LENGTH_SHORT);
                 accptMsg.show();
             }
 

@@ -63,15 +63,15 @@ public class TopicQuiz extends AppCompatActivity {
         mQuestionLength= mQuestions.mQuestions[quizNumber].length;
         r = new Random();
 
-        answer1 = (Button) findViewById(R.id.answer1);
-        answer2 = (Button) findViewById(R.id.answer2);
-        answer3 = (Button) findViewById(R.id.answer3);
-        answer4 = (Button) findViewById(R.id.answer4);
+        answer1 = findViewById(R.id.answer1);
+        answer2 = findViewById(R.id.answer2);
+        answer3 = findViewById(R.id.answer3);
+        answer4 = findViewById(R.id.answer4);
 
-        score = (TextView) findViewById(R.id.score);
-        question = (TextView) findViewById(R.id.question);
+        score = findViewById(R.id.score);
+        question = findViewById(R.id.question);
 
-        score.setText("Score: " + mScore);
+        score.setText(getString(R.string.score_and_value, mScore));
         updateQuestion(r.nextInt(mQuestionLength));
 
         answer1.setOnClickListener(new View.OnClickListener() {
@@ -80,7 +80,7 @@ public class TopicQuiz extends AppCompatActivity {
 
                 if(answer1.getText() == mAnswer){
                     mScore++;
-                    score.setText("Score: " + mScore);
+                    score.setText(getString(R.string.score_and_value, mScore));
                     updateQuestion(r.nextInt(mQuestionLength));
                 }else{
                     gameover();
@@ -94,7 +94,7 @@ public class TopicQuiz extends AppCompatActivity {
 
                 if(answer2.getText() == mAnswer){
                     mScore++;
-                    score.setText("Score: " + mScore);
+                    score.setText(getString(R.string.score_and_value, mScore));
                     updateQuestion(r.nextInt(mQuestionLength));
                 }else{
                     gameover();
@@ -108,7 +108,7 @@ public class TopicQuiz extends AppCompatActivity {
 
                 if(answer3.getText() == mAnswer){
                     mScore++;
-                    score.setText("Score: " + mScore);
+                    score.setText(getString(R.string.score_and_value, mScore));
                     updateQuestion(r.nextInt(mQuestionLength));
                 }else{
                     gameover();
@@ -122,7 +122,7 @@ public class TopicQuiz extends AppCompatActivity {
 
                 if(answer4.getText() == mAnswer){
                     mScore++;
-                    score.setText("Score: " + mScore);
+                    score.setText(getString(R.string.score_and_value, mScore));
                     updateQuestion(r.nextInt(mQuestionLength));
                 }else{
                     gameover();
@@ -146,9 +146,9 @@ public class TopicQuiz extends AppCompatActivity {
     private void gameover(){
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(TopicQuiz.this);
         alertDialogBuilder
-                .setMessage("Game over! You're score is " + mScore)
+                .setMessage(getString(R.string.gameOver, mScore))
                 .setCancelable(false)
-                .setPositiveButton("NEW GAME",
+                .setPositiveButton(R.string.newGame,
                         new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
@@ -158,7 +158,7 @@ public class TopicQuiz extends AppCompatActivity {
                                 startActivity(i);
                             }
                         })
-                .setNegativeButton("EXIT",
+                .setNegativeButton(R.string.exit,
                         new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {

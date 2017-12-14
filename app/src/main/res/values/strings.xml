@@ -8,10 +8,15 @@
     <string name="submit">Submit</string>
     <string name="signUp">Sign Up</string>
     <string name="noAccount">No account yet? Sign up here!</string>
+    <string name="badLogin">Invalid Login credientials!</string>
 
     <!-- Strings for SIGNUP -->
     <string name="firstName">First Name</string>
     <string name="confirm">Confirm Password</string>
+
+    <string name="noMatch">Passwords don\'t match!</string>
+    <string name="infoAccepted">Information Accepted!</string>
+
     <!--
     <string name="user">Username</string>
     <string name="pass">Password</string>
@@ -65,4 +70,10 @@
     <string name="java">Java</string>
     <string name="cpp">C++</string>
     <string name="python">Python</string>
+
+    <!-- Strings for TOPIC QUIZ -->
+    <string name="score_and_value">Score: %d</string>
+    <string name="gameOver">Game over! Your score is %d</string>
+    <string name="newGame">New Game</string>
+    <string name="exit">Exit</string>
 </resources>

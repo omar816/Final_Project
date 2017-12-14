@@ -28,7 +28,7 @@ public class SignUpActivity extends AppCompatActivity {
 
             if(!passStr.equals(cPassStr)) {
                 //popup toast
-                Toast passMsg = Toast.makeText(SignUpActivity.this, "Passwords don't match!", Toast.LENGTH_SHORT);
+                Toast passMsg = Toast.makeText(SignUpActivity.this, R.string.noMatch, Toast.LENGTH_SHORT);
                 passMsg.show();
             }
             else
@@ -40,7 +40,7 @@ public class SignUpActivity extends AppCompatActivity {
 
                 helper.insertContact(c);
 
-                Toast accptMsg = Toast.makeText(getApplicationContext(), "Information Accepted!", Toast.LENGTH_SHORT);
+                Toast accptMsg = Toast.makeText(getApplicationContext(), R.string.infoAccepted, Toast.LENGTH_SHORT);
                 accptMsg.show();
 
                 Intent i = new Intent(getApplicationContext(), LogIn.class);

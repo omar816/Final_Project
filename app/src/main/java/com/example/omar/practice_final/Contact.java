@@ -3,8 +3,8 @@ package com.example.omar.practice_final;
 
 public class Contact {
 
-    int id;
-    String name, uname, pass;
+    private int id;
+    private String name, uname, pass;
 
     public void setId(int id){
         this.id = id;
