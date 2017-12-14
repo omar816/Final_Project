@@ -33,6 +33,7 @@ public class DatabaseHelper extends SQLiteOpenHelper{
         this.db = db;
     }
 
+
     public void insertContact(Contact c){
         db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
