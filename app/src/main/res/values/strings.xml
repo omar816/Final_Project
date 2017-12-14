@@ -59,4 +59,10 @@
     <string name="title_activity_html_quiz">HtmlQuiz</string>
     <string name="title_activity_html_stats">HtmlStats</string>
     <string name="topic">Topic</string>
+    <string name="html">HTML</string>
+    <string name="css">CSS</string>
+    <string name="javascript">JavaScript</string>
+    <string name="java">Java</string>
+    <string name="cpp">C++</string>
+    <string name="python">Python</string>
 </resources>
