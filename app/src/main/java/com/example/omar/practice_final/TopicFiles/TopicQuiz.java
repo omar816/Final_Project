@@ -1,4 +1,4 @@
-package com.example.omar.practice_final.HtmlFiles;
+package com.example.omar.practice_final.TopicFiles;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -15,13 +15,13 @@ import com.example.omar.practice_final.R;
 
 import java.util.Random;
 
-public class HtmlQuiz extends AppCompatActivity {
+public class TopicQuiz extends AppCompatActivity {
     String topic;
     Button answer1, answer2, answer3, answer4;
 
     TextView score, question;
 
-    private HtmlQuizQuestions mQuestions = new HtmlQuizQuestions();
+    private TopicQuizQuestions mQuestions = new TopicQuizQuestions();
 
     private String mAnswer;
     private int mScore=0;
@@ -144,7 +144,7 @@ public class HtmlQuiz extends AppCompatActivity {
     }
 
     private void gameover(){
-        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(HtmlQuiz.this);
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(TopicQuiz.this);
         alertDialogBuilder
                 .setMessage("Game over! You're score is " + mScore)
                 .setCancelable(false)
@@ -153,7 +153,7 @@ public class HtmlQuiz extends AppCompatActivity {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 finish();
-                                Intent i = new Intent(getApplicationContext(), HtmlQuiz.class);
+                                Intent i = new Intent(getApplicationContext(), TopicQuiz.class);
                                 i.putExtra("Topic", topic);
                                 startActivity(i);
                             }

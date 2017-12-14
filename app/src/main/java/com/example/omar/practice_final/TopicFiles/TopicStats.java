@@ -1,4 +1,4 @@
-package com.example.omar.practice_final.HtmlFiles;
+package com.example.omar.practice_final.TopicFiles;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -7,7 +7,7 @@ import android.view.MenuItem;
 
 import com.example.omar.practice_final.R;
 
-public class HtmlStats extends AppCompatActivity {
+public class TopicStats extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

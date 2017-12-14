@@ -7,12 +7,12 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
-import com.example.omar.practice_final.HtmlFiles.HtmlActivity;
+import com.example.omar.practice_final.TopicFiles.TopicActivity;
 
 public class ActivityList extends AppCompatActivity {
 
     public void onClick(View view) {
-        Intent i = new Intent(getApplicationContext(), HtmlActivity.class);
+        Intent i = new Intent(getApplicationContext(), TopicActivity.class);
 
         switch(view.getId()){
             case R.id.htmlButton:

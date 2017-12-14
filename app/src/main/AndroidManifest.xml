@@ -33,15 +33,15 @@
             android:label="@string/title_activity_sign_up" >
         </activity>
         <activity
-            android:name=".HtmlFiles.HtmlActivity"
+            android:name=".TopicFiles.TopicActivity"
             android:label="@string/title_activity_html" >
         </activity>
         <activity
-            android:name=".HtmlFiles.HtmlQuiz"
+            android:name=".TopicFiles.TopicQuiz"
             android:label="@string/title_activity_html_quiz" >
         </activity>
         <activity
-            android:name=".HtmlFiles.HtmlStats"
+            android:name=".TopicFiles.TopicStats"
             android:label="@string/title_activity_html_stats" >
         </activity>
     </application>

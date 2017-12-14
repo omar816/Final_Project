@@ -1,9 +1,9 @@
-package com.example.omar.practice_final.HtmlFiles;
+package com.example.omar.practice_final.TopicFiles;
 
 /**
  * Created by Omar on 2017-12-11.
  */
-public class HtmlQuizQuestions {
+public class TopicQuizQuestions {
     public String mQuestions[][] = {
         {   // No topic
             "Something has gone horribly wrong. There is no topic for this quiz."

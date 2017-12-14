@@ -1,4 +1,4 @@
-package com.example.omar.practice_final.HtmlFiles;
+package com.example.omar.practice_final.TopicFiles;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -11,7 +11,7 @@ import android.widget.TextView;
 
 import com.example.omar.practice_final.R;
 
-public class HtmlActivity extends AppCompatActivity {
+public class TopicActivity extends AppCompatActivity {
     String topic;
 
     public void clickFunction(View view) {
@@ -45,12 +45,12 @@ public class HtmlActivity extends AppCompatActivity {
             startActivity(i);
         }
         if (view.getId() == R.id.quizButton) {
-            Intent i = new Intent(getApplicationContext(), HtmlQuiz.class);
+            Intent i = new Intent(getApplicationContext(), TopicQuiz.class);
             i.putExtra("Topic", topic);
             startActivity(i);
         }
         if (view.getId() == R.id.statButton) {
-            Intent i = new Intent(getApplicationContext(), HtmlStats.class);
+            Intent i = new Intent(getApplicationContext(), TopicStats.class);
             i.putExtra("Topic", topic);
             startActivity(i);
         }
