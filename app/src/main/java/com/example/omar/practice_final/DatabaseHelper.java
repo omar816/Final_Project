@@ -6,6 +6,8 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import java.util.ArrayList;
+
 public class DatabaseHelper extends SQLiteOpenHelper{
 
     private static final int DATABASE_VERSION = 1;
@@ -100,6 +102,25 @@ public class DatabaseHelper extends SQLiteOpenHelper{
         db.close();
         return result;
     }
+
+    public Object[][] getGraphData(String topic, String username){
+        ArrayList<Integer> attempts = new ArrayList<>();
+        ArrayList<Integer> scores = new ArrayList<>();
+        db = this.getReadableDatabase();
+        String recordName=username+topic;
+        String query = "select attempt, score from " +recordName;
+        Cursor cursor = db.rawQuery(query, null);
+        while(cursor.moveToNext()){
+            //int i = 0;
+            //int[] attemptArray[i] = cursor.getInt();
+            attempts.add(cursor.getInt(0));
+            scores.add(cursor.getInt(1));
+        }
+        Object[][] result = {attempts.toArray(),scores.toArray()};
+        db.close();
+        return result;
+    }
+
 
     public int[] getTopScore(String topic, String username){
         int result[] ={0,0};

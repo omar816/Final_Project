@@ -39,6 +39,8 @@ public class TopicStats extends AppCompatActivity{
         ((TextView)findViewById(R.id.textStats)).setText(stats);
         //textStats.setMovementMethod(new ScrollingMovementMethod());
 
+        Object[][] record = helper.getGraphData(topic, username);
+
         mChart = (LineChart) findViewById(R.id.linechart);
 //        mChart.setOnChartGestureListener(TopicStats.this);
 //        mChart.setOnChartValueSelectedListener(TopicStats.this);
@@ -47,20 +49,27 @@ public class TopicStats extends AppCompatActivity{
         mChart.setScaleEnabled(false);
 
         ArrayList<Entry> yValues1 = new ArrayList<>();
-        yValues1.add(new Entry(0, 2f));
+  /*      yValues1.add(new Entry(0, 2f));
         yValues1.add(new Entry(1, 3f));
         yValues1.add(new Entry(2, 5f));
         yValues1.add(new Entry(3, 4f));
         yValues1.add(new Entry(4, 12f));
-        yValues1.add(new Entry(5, 17f));
+        yValues1.add(new Entry(5, 17f));*/
+
+        for(int i =0; i<=record.length; i++){
+            yValues1.add(new Entry(i,((int) record[1][i])));
+        }
+
         LineDataSet set1 = new LineDataSet(yValues1, username + "'s record");
+
+
 
         set1.setFillAlpha(110);
         set1.setColor(Color.BLUE);
         set1.setLineWidth(2f);
         set1.setCircleHoleRadius(3f);
         //set1.set
-
+/*
         ArrayList<Entry> yValues2 = new ArrayList<>();
         yValues2.add(new Entry(0, 3f));
         yValues2.add(new Entry(1, 5f));
@@ -75,10 +84,10 @@ public class TopicStats extends AppCompatActivity{
         set2.setLineWidth(2f);
         set2.setCircleHoleRadius(3f);
         //set2.set
-
+*/
         ArrayList<ILineDataSet> dataSets = new ArrayList<>();
         dataSets.add(set1);
-        dataSets.add(set2);
+    //    dataSets.add(set2);
 
         LineData data = new LineData(dataSets);
 
