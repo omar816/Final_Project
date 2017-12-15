@@ -81,4 +81,6 @@
 
     <!-- Strings for TOPIC STATS -->
     <string name="topscore">Top Score: %d\n\nHistory:\n%s</string>
+
+    <string name="title_activity_map_display">Map</string>
 </resources>
