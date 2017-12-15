@@ -22,6 +22,8 @@ public class TopicStats extends AppCompatActivity{
 
     private static final String TAG = "TopicStats";
     private LineChart mChart;
+    // MPAndroidChart is creditted to Phil Jay who shared his graph library on github
+    //https://github.com/PhilJay/MPAndroidChart and https://jitpack.io
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
