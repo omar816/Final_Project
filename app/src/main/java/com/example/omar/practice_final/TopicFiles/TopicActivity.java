@@ -18,7 +18,7 @@ public class TopicActivity extends AppCompatActivity {
     String topic;
     String username;
     public void clickFunction(View view) {
-        String urlString="";
+        String urlString;
         if (view.getId() == R.id.conceptButton) {
             switch (topic){
                 case "HTML":
@@ -69,10 +69,10 @@ public class TopicActivity extends AppCompatActivity {
         DatabaseHelper helper = new DatabaseHelper(this);
         topic = getIntent().getStringExtra("Topic");
         username = getIntent().getStringExtra("Username");
-        setContentView(R.layout.activity_html);
-        TextView topicText = (TextView)findViewById(R.id.topicText);
+        setContentView(R.layout.activity_topic);
+        TextView topicText = findViewById(R.id.topicText);
         topicText.setText(topic);
-        ProgressBar progressBar=(ProgressBar)findViewById(R.id.progressBar); // initiate the progress bar
+        ProgressBar progressBar=findViewById(R.id.progressBar); // initiate the progress bar
         ProgressUpdater progressUpdater = new ProgressUpdater();
         progressUpdater.updateProgressBar(progressBar,helper,topic, username);
         helper.close();

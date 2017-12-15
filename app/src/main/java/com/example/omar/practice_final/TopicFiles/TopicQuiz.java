@@ -37,7 +37,7 @@ public class TopicQuiz extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_html_quiz);
+        setContentView(R.layout.activity_topic_quiz);
         topic = getIntent().getStringExtra("Topic");
         username = getIntent().getStringExtra("Username");
         questionsDone = "";

@@ -16,7 +16,7 @@ public class TopicStats extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_html_stats);
+        setContentView(R.layout.activity_topic_stats);
         topic = getIntent().getStringExtra("Topic");
         username = getIntent().getStringExtra("Username");
         DatabaseHelper helper = new DatabaseHelper(this);
