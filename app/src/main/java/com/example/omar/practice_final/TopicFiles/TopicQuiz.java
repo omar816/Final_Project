@@ -3,6 +3,9 @@ package com.example.omar.practice_final.TopicFiles;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.res.AssetFileDescriptor;
+import android.content.res.Resources;
+import android.media.SoundPool;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
@@ -33,10 +36,26 @@ public class TopicQuiz extends AppCompatActivity {
 
     Random r;
 
+    private SoundPool soundPool;
+    private int soundWin, soundLose;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_topic_quiz);
+
+        Resources res = getResources();
+
+        // load a sound effect
+        AssetFileDescriptor sound1Fd = res.openRawResourceFd(R.raw.kids_booing);
+        AssetFileDescriptor sound2Fd = res.openRawResourceFd(R.raw.kids_cheering);
+        SoundPool.Builder spBuilder = new SoundPool.Builder();
+        spBuilder.setMaxStreams(20);
+        soundPool = spBuilder.build();
+
+        soundLose = soundPool.load(sound1Fd, 1);
+        soundWin = soundPool.load(sound2Fd, 1);
+
         topic = getIntent().getStringExtra("Topic");
         username = getIntent().getStringExtra("Username");
         questionsDone = "";
@@ -90,6 +109,9 @@ public class TopicQuiz extends AppCompatActivity {
         if(b.getText().equals(mAnswer)){
             endQuestion();
         }else{
+            soundPool.play(soundLose,
+                    1f, 1f,
+                    0, 0, 1f);
             endMessage = getString(R.string.gameOver, mScore);
             gameover();
         }
@@ -109,6 +131,9 @@ public class TopicQuiz extends AppCompatActivity {
     private void endQuestion(){
         mScore++;
         if (mScore>=mQuestionLength){
+            soundPool.play(soundWin,
+                    1f, 1f,
+                    0, 0, 1f);
             endMessage = getString(R.string.gameWon, mScore);
             gameover();
         }else{
