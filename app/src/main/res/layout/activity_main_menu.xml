@@ -20,32 +20,12 @@
         android:text="@string/menu1" />
 
     <Button
-        android:id="@+id/button9"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/button10"
-        android:layout_alignParentBottom="true"
-        android:layout_alignStart="@+id/button10"
-        android:layout_marginBottom="59dp"
-        android:text="@string/menu5" />
-
-    <Button
-        android:id="@+id/button10"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/button9"
-        android:layout_alignLeft="@+id/button8"
-        android:layout_marginBottom="20dp"
-        android:onClick="settings"
-        android:text="@string/menu4" />
-
-    <Button
         android:id="@+id/button11"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/button10"
-        android:layout_alignLeft="@+id/button8"
-        android:layout_marginBottom="20dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="144dp"
         android:onClick="compare"
         android:text="@string/menu3" />
 

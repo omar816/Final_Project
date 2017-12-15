@@ -16,10 +16,10 @@ public class SignUpActivity extends AppCompatActivity {
     public void onSignUpClick(View view) {
 
         if(view.getId()==R.id.BsignupButton){
-            EditText name = (EditText)findViewById(R.id.TFname);
-            EditText username = (EditText)findViewById(R.id.TFuname);
-            EditText pass = (EditText)findViewById(R.id.TFpass);
-            EditText cPass = (EditText)findViewById(R.id.TFcPass);
+            EditText name = findViewById(R.id.TFname);
+            EditText username = findViewById(R.id.TFuname);
+            EditText pass = findViewById(R.id.TFpass);
+            EditText cPass = findViewById(R.id.TFcPass);
 
             String nameStr = name.getText().toString();
             String unameStr = username.getText().toString();
@@ -27,17 +27,19 @@ public class SignUpActivity extends AppCompatActivity {
             String cPassStr = cPass.getText().toString();
 
             if(!passStr.equals(cPassStr)) {
-                //popup toast
+                // toast if retyped password doesn't match
                 Toast passMsg = Toast.makeText(SignUpActivity.this, R.string.noMatch, Toast.LENGTH_SHORT);
                 passMsg.show();
             }
             else
             {
+                // creates new user
                 Contact c = new Contact();
                 c.setName(nameStr);
                 c.setUname(unameStr);
                 c.setPass(passStr);
 
+                // adds user to the database along with progress in quizzes
                 helper.insertContact(c);
                 helper.createTopicRecord("HTML", unameStr);
                 helper.createTopicRecord("CSS", unameStr);
@@ -50,6 +52,7 @@ public class SignUpActivity extends AppCompatActivity {
                 Toast accptMsg = Toast.makeText(getApplicationContext(), R.string.infoAccepted, Toast.LENGTH_SHORT);
                 accptMsg.show();
 
+                // return to the login menu
                 Intent i = new Intent(getApplicationContext(), LogIn.class);
                 startActivity(i);
             }
