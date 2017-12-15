@@ -33,6 +33,7 @@ public class MapDisplay extends FragmentActivity implements OnMapReadyCallback {
     private Marker currMarker;
     private double latitude, longitude;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -114,7 +115,7 @@ public class MapDisplay extends FragmentActivity implements OnMapReadyCallback {
                 == PackageManager.PERMISSION_GRANTED) {
             locationManager.requestLocationUpdates(recommendedProvider,
                     5000, 10, (LocationListener) this);
-            Log.i("Lab8", "requestLocationUpdates()");
+            Log.i("Map", "requestLocationUpdates()");
         }
     }
 
@@ -128,15 +129,6 @@ public class MapDisplay extends FragmentActivity implements OnMapReadyCallback {
 
                 if (results.size() > 0) {
                     String address1 = results.get(0).getAddressLine(0);
-                    /*
-                    String address2 = results.get(0).getAddressLine(1);
-                    String city = results.get(0).getLocality();
-                    String prov = results.get(0).getAdminArea();
-                    String country = results.get(0).getCountryName();
-                    String postalCode = results.get(0).getPostalCode();
-                    String phone = results.get(0).getPhone();
-                    String url = results.get(0).getUrl();
-                    */
 
                     String geo = address1;
                     return geo;

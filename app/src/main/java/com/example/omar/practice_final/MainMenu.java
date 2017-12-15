@@ -20,6 +20,14 @@ public class MainMenu extends AppCompatActivity {
         i.putExtra("Username", userx);
         startActivity(i);
     }
+
+    public void compare(View view) {
+        Intent i = new Intent(getApplicationContext(), MapDisplay.class);
+        i.putExtra("Username", userx);
+        startActivity(i);
+    }
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
