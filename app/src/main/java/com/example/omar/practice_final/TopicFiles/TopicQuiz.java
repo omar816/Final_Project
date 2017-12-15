@@ -20,6 +20,8 @@ import com.example.omar.practice_final.R;
 import java.util.Random;
 
 public class TopicQuiz extends AppCompatActivity {
+
+    //initialize relevant variables
     String topic, username, endMessage;
     Button answer1, answer2, answer3, answer4;
 
@@ -60,6 +62,8 @@ public class TopicQuiz extends AppCompatActivity {
         username = getIntent().getStringExtra("Username");
         questionsDone = "";
         qnum=0;
+
+        //choose the right case
         switch(topic){
             case "HTML":
                 quizNumber=1;
@@ -87,16 +91,20 @@ public class TopicQuiz extends AppCompatActivity {
         mQuestionLength= mQuestions.mQuestions[quizNumber].length;
         r = new Random();
 
+        //add the answers to the right question
         answer1 = findViewById(R.id.answer1);
         answer2 = findViewById(R.id.answer2);
         answer3 = findViewById(R.id.answer3);
         answer4 = findViewById(R.id.answer4);
 
+        //initializing the score and question textviews
         score = findViewById(R.id.score);
         question = findViewById(R.id.question);
 
+        //score will take the values of mScore
         score.setText(getString(R.string.score_and_value, mScore));
 
+        //get num values of all question
         while(questionsDone.contains(String.valueOf(qnum))) {
             qnum = r.nextInt(mQuestionLength);
         }
@@ -104,6 +112,7 @@ public class TopicQuiz extends AppCompatActivity {
         updateQuestion(qnum);
     }
 
+    //initializing volume controls
     public void onClick(View v) {
         Button b = (Button)v;
         if(b.getText().equals(mAnswer)){
@@ -118,6 +127,8 @@ public class TopicQuiz extends AppCompatActivity {
     }
 
     private void updateQuestion(int num) {
+
+        //updating the question text to the textview
         question.setText(mQuestions.getQuestion(quizNumber, num));
         answer1.setText(mQuestions.getChoice1(quizNumber, num));
         answer2.setText(mQuestions.getChoice2(quizNumber, num));
@@ -129,6 +140,10 @@ public class TopicQuiz extends AppCompatActivity {
     }
 
     private void endQuestion(){
+        //applies at the end of a question
+        //score is incremented then
+        //appropriate sound is played at success oor failure of quiz question
+
         mScore++;
         if (mScore>=mQuestionLength){
             soundPool.play(soundWin,
@@ -146,11 +161,14 @@ public class TopicQuiz extends AppCompatActivity {
         }
     }
 
+    //at game over, the database records the appropriate values
         private void gameover(){
         DatabaseHelper helper = new DatabaseHelper(this);
         helper.insertRecord(topic,username, mScore, mQuestionLength);
         String x = helper.getRecord(topic,username);
         System.out.println(x);
+
+        //Upon quiz end, prompt the user to retry or exit the module
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(TopicQuiz.this);
         alertDialogBuilder
                 .setMessage(endMessage)

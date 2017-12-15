@@ -19,7 +19,11 @@ public class TopicActivity extends AppCompatActivity {
     String username;
     public void clickFunction(View view) {
         String urlString;
+
+        //Check which button is pressed and execute the correlated functions
         if (view.getId() == R.id.conceptButton) {
+
+            //visit appropriate wikipedia page corresponding to the chosen topic
             switch (topic){
                 case "HTML":
                     urlString= "https://en.wikipedia.org/wiki/HTML";
@@ -49,12 +53,16 @@ public class TopicActivity extends AppCompatActivity {
         }
         if (view.getId() == R.id.quizButton) {
             finish();
+
+            //go to correspoonding quiz for the topic
             Intent i = new Intent(getApplicationContext(), TopicQuiz.class);
             i.putExtra("Topic", topic);
             i.putExtra("Username", getIntent().getStringExtra("Username"));
             startActivity(i);
 
         }
+
+        //go to stats page for topic
         if (view.getId() == R.id.statButton) {
             Intent i = new Intent(getApplicationContext(), TopicStats.class);
             i.putExtra("Topic", topic);
@@ -66,12 +74,18 @@ public class TopicActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        //Now using the database helper class
         DatabaseHelper helper = new DatabaseHelper(this);
         topic = getIntent().getStringExtra("Topic");
         username = getIntent().getStringExtra("Username");
         setContentView(R.layout.activity_topic);
+
+        //Our 1 textview will will take the name of the chosen topic
         TextView topicText = findViewById(R.id.topicText);
         topicText.setText(topic);
+
+        //progress bar will update correlating to real time quiz progress
         ProgressBar progressBar=findViewById(R.id.progressBar); // initiate the progress bar
         ProgressUpdater progressUpdater = new ProgressUpdater();
         progressUpdater.updateProgressBar(progressBar,helper,topic, username);
