@@ -6,8 +6,26 @@
     android:paddingBottom="@dimen/activity_vertical_margin"
     tools:context="com.example.omar.practice_final.TopicFiles.TopicStats">
 
-    <TextView android:text="@string/tempStats" android:layout_width="wrap_content"
+    <TextView
         android:id="@+id/textStats"
-        android:layout_height="wrap_content" />
+        android:layout_width="200dp"
+        android:layout_height="220dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:maxLines="10"
+        android:scrollbars="vertical"
+        android:text="@string/tempStats" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true">
+
+        <com.github.mikephil.charting.charts.LineChart
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/linechart"></com.github.mikephil.charting.charts.LineChart>
+    </RelativeLayout>
 
 </RelativeLayout>

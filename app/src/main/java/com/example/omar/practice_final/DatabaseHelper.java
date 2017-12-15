@@ -85,11 +85,15 @@ public class DatabaseHelper extends SQLiteOpenHelper{
 
     public String getRecord(String topic, String username){
         String result= "";
+
+        //int[] scoreArray;
         db = this.getReadableDatabase();
         String recordName= username+topic;
         String query = "select attempt, score from " +recordName;
         Cursor cursor = db.rawQuery(query, null);
         while(cursor.moveToNext()){
+            //int i = 0;
+            //int[] attemptArray[i] = cursor.getInt();
             result+= "Attempt: " + cursor.getInt(0);
             result+= " Score: " + cursor.getInt(1) + "\n";
         }
