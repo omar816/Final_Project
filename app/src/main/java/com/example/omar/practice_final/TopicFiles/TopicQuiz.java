@@ -10,7 +10,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.omar.practice_final.DatabaseHelper;
 import com.example.omar.practice_final.R;
@@ -18,7 +17,7 @@ import com.example.omar.practice_final.R;
 import java.util.Random;
 
 public class TopicQuiz extends AppCompatActivity {
-    String topic, username;
+    String topic, username, endMessage;
     Button answer1, answer2, answer3, answer4;
 
     TextView score, question;
@@ -91,6 +90,7 @@ public class TopicQuiz extends AppCompatActivity {
         if(b.getText().equals(mAnswer)){
             endQuestion();
         }else{
+            endMessage = getString(R.string.gameOver, mScore);
             gameover();
         }
     }
@@ -109,9 +109,7 @@ public class TopicQuiz extends AppCompatActivity {
     private void endQuestion(){
         mScore++;
         if (mScore>=mQuestionLength){
-            Toast winMsg = Toast.makeText(getApplicationContext(),
-                    R.string.win, Toast.LENGTH_LONG);
-            winMsg.show();
+            endMessage = getString(R.string.gameWon, mScore);
             gameover();
         }else{
             score.setText(getString(R.string.score_and_value, mScore));
@@ -130,7 +128,7 @@ public class TopicQuiz extends AppCompatActivity {
         System.out.println(x);
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(TopicQuiz.this);
         alertDialogBuilder
-                .setMessage(getString(R.string.gameOver, mScore))
+                .setMessage(endMessage)
                 .setCancelable(false)
                 .setPositiveButton(R.string.newGame,
                         new DialogInterface.OnClickListener() {

@@ -20,7 +20,7 @@ public class TopicStats extends AppCompatActivity {
         topic = getIntent().getStringExtra("Topic");
         username = getIntent().getStringExtra("Username");
         DatabaseHelper helper = new DatabaseHelper(this);
-        String stats =  getString(R.string.topscore, helper.getTopScore(topic,username)[0], helper.getRecord(topic, username));
+        String stats =  getString(R.string.topScore, helper.getTopScore(topic,username)[0], helper.getRecord(topic, username));
         ((TextView)findViewById(R.id.textStats)).setText(stats);
     }
 
