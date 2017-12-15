@@ -20,22 +20,12 @@
         android:text="@string/menu1" />
 
     <Button
-        android:id="@+id/button11"
+        android:id="@+id/button12"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true"
-        android:layout_marginBottom="144dp"
-        android:onClick="compare"
-        android:text="@string/menu3" />
-
-    <Button
-        android:id="@+id/button12"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/button11"
-        android:layout_alignLeft="@+id/button8"
-        android:layout_marginBottom="20dp"
+        android:layout_marginBottom="169dp"
         android:onClick="profile"
         android:text="@string/menu2" />
 
