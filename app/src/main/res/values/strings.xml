@@ -78,4 +78,7 @@
     <string name="exit">Exit</string>
     <string name="tempstats">your stats here</string>
     <string name="win">Perfect Score!!!</string>
+
+    <!-- Strings for TOPIC STATS -->
+    <string name="topscore">Top Score: %d\n\nHistory:\n%s</string>
 </resources>

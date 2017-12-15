@@ -84,58 +84,18 @@ public class TopicQuiz extends AppCompatActivity {
         }
         questionsDone+= " " + qnum;
         updateQuestion(qnum);
-
-        answer1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                if(answer1.getText() == mAnswer){
-                    endQuestion();
-                }else{
-                    gameover();
-                }
-
-            }
-        });
-        answer2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                if(answer2.getText() == mAnswer){
-                    endQuestion();
-                }else{
-                    gameover();
-                }
-
-            }
-        });
-        answer3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                if(answer3.getText() == mAnswer){
-                    endQuestion();
-                }else{
-                    gameover();
-                }
-
-            }
-        });
-        answer4.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                if(answer4.getText() == mAnswer){
-                    endQuestion();
-                }else{
-                    gameover();
-                }
-
-            }
-        });
     }
 
-    private  void updateQuestion(int num) {
+    public void onClick(View v) {
+        Button b = (Button)v;
+        if(b.getText().equals(mAnswer)){
+            endQuestion();
+        }else{
+            gameover();
+        }
+    }
+
+    private void updateQuestion(int num) {
         question.setText(mQuestions.getQuestion(quizNumber, num));
         answer1.setText(mQuestions.getChoice1(quizNumber, num));
         answer2.setText(mQuestions.getChoice2(quizNumber, num));
@@ -163,11 +123,7 @@ public class TopicQuiz extends AppCompatActivity {
         }
     }
 
-    private void checkWin(){
-
-    }
-
-    private void gameover(){
+        private void gameover(){
         DatabaseHelper helper = new DatabaseHelper(this);
         helper.insertRecord(topic,username, mScore, mQuestionLength);
         String x = helper.getRecord(topic,username);

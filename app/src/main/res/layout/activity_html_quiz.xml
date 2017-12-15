@@ -13,38 +13,42 @@
         android:id="@+id/score" />
 
     <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="New Button"
         android:id="@+id/answer4"
-        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:onClick="onClick"
+        android:text="New Button" />
 
     <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="New Button"
         android:id="@+id/answer3"
-        android:gravity="center"
-        android:layout_above="@+id/answer4"/>
-
-    <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="New Button"
+        android:layout_above="@+id/answer4"
+        android:gravity="center"
+        android:onClick="onClick"
+        android:text="New Button" />
+
+    <Button
         android:id="@+id/answer2"
-        android:gravity="center"
-        android:layout_above="@+id/answer3"
-        android:layout_centerHorizontal="true" />
-
-    <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="New Button"
-        android:id="@+id/answer1"
+        android:layout_above="@+id/answer3"
+        android:layout_centerHorizontal="true"
         android:gravity="center"
-        android:layout_above="@+id/answer2"/>
+        android:onClick="onClick"
+        android:text="New Button" />
+
+    <Button
+        android:id="@+id/answer1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/answer2"
+        android:gravity="center"
+        android:onClick="onClick"
+        android:text="New Button" />
 
     <TextView
         android:layout_width="match_parent"
