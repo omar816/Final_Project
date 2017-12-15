@@ -9,9 +9,11 @@ import com.example.omar.practice_final.TopicFiles.TopicActivity;
 
 public class ActivityList extends AppCompatActivity {
 
+    //Universal Click Function
     public void onClick(View view) {
         Intent i = new Intent(getApplicationContext(), TopicActivity.class);
 
+        //Which button was pressed?
         switch(view.getId()){
             case R.id.htmlButton:
                 i.putExtra("Topic", "HTML");

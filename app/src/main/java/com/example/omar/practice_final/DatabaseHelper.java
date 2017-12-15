@@ -10,6 +10,7 @@ import java.util.ArrayList;
 
 public class DatabaseHelper extends SQLiteOpenHelper{
 
+    //Initialize SQLite Database,table and table's corresponding data/columns
     private static final int DATABASE_VERSION = 1;
     private static final String DATABASE_NAME = "contacts.db";
     private static final String TABLE_NAME = "contacts";
@@ -20,6 +21,7 @@ public class DatabaseHelper extends SQLiteOpenHelper{
 
     SQLiteDatabase db;
 
+    //Create a contacts table with SQLite code
     private static final String USER_TABLE_CREATE = "create table contacts " +
             "(id integer primary key not null , " +
             "name text not null , uname text not null , pass text not null);";
@@ -38,14 +40,18 @@ public class DatabaseHelper extends SQLiteOpenHelper{
     }
 
 
+    //Adding values into our target table
+
     public void insertContact(Contact c){
         db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
 
+        //targeting our contact database
         String query = "select * from contacts";
         Cursor cursor = db.rawQuery(query, null);
         int count = cursor.getCount();
 
+        //filling the columns
         values.put(COLUMN_ID, count);
         values.put(COLUMN_NAME, c.getName());
         values.put(COLUMN_UNAME, c.getUname());
@@ -57,6 +63,8 @@ public class DatabaseHelper extends SQLiteOpenHelper{
 
     }
 
+    //Function for getting record data that we will feed into the linegraph in teh stats
+    //page, for both the topic stats and the compare page
     public void createTopicRecord(String topic, String username){
         db = this.getWritableDatabase();
         String recordName = username+topic;
@@ -69,15 +77,19 @@ public class DatabaseHelper extends SQLiteOpenHelper{
         insertRecord(topic,username, 0, 1);
     }
 
+
     public void insertRecord(String topic, String username, int score, int total){
+        //write to teh database
         db = this.getWritableDatabase();
         String recordName = username+topic;
         ContentValues values = new ContentValues();
 
+        //Get all data from record name
         String query = "select * from " + recordName;
         Cursor cursor = db.rawQuery(query, null);
         int count = cursor.getCount();
 
+        //store the attempt, score and total for our users attempts
         values.put("attempt",count);
         values.put("score", score);
         values.put("total", total);

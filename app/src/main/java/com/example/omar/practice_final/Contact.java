@@ -3,6 +3,8 @@ package com.example.omar.practice_final;
 
 public class Contact {
 
+    //Getters and Setters for Databasehelper to use when passing data
+
     private int id;
     private String name, uname, pass;
 

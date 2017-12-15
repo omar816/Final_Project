@@ -4,6 +4,7 @@ package com.example.omar.practice_final.TopicFiles;
  * Created by Omar on 2017-12-11.
  */
 public class TopicQuizQuestions {
+
     public String mQuestions[][] = {
         {   // No topic
             "Something has gone horribly wrong. There is no topic for this quiz."
@@ -120,6 +121,7 @@ public class TopicQuizQuestions {
             }
     };
 
+    //Have each question associated with its corresponding answers
     public String getQuestion(int quizNumber, int a){
         String question = mQuestions[quizNumber][a];
         return question;

@@ -18,7 +18,7 @@ import java.util.ArrayList;
 public class TopicStats extends AppCompatActivity{
     String topic;
     String username;
-    //TextView textStats;
+    //TextView textStats; - associated with textview scrolling
 
     private static final String TAG = "TopicStats";
     private LineChart mChart;
@@ -30,59 +30,43 @@ public class TopicStats extends AppCompatActivity{
         topic = getIntent().getStringExtra("Topic");
         username = getIntent().getStringExtra("Username");
         DatabaseHelper helper = new DatabaseHelper(this);
+
+        //connect the score and attempt text data from the database class to stats variable
         String stats =  getString(R.string.topScore, helper.getTopScore(topic,username)[0], helper.getRecord(topic, username));
+
         ((TextView)findViewById(R.id.textStats)).setText(stats);
         //textStats.setMovementMethod(new ScrollingMovementMethod());
+        //above function should make the code scroallable after it exceeds 10 lines
 
         Object[][] record = helper.getGraphData(topic, username);
 
         mChart = findViewById(R.id.linechart);
 //        mChart.setOnChartGestureListener(TopicStats.this);
 //        mChart.setOnChartValueSelectedListener(TopicStats.this);
+        //insert above code for older android version, else disregard
 
         mChart.setDragEnabled(true);
         mChart.setScaleEnabled(false);
 
+        //initialize arrayList for line graph node locations
         ArrayList<Entry> yValues1 = new ArrayList<>();
-  /*      yValues1.add(new Entry(0, 2f));
-        yValues1.add(new Entry(1, 3f));
-        yValues1.add(new Entry(2, 5f));
-        yValues1.add(new Entry(3, 4f));
-        yValues1.add(new Entry(4, 12f));
-        yValues1.add(new Entry(5, 17f));*/
 
         for(int i =0; i<record[0].length; i++){
             yValues1.add(new Entry(i+1,((int) record[1][i])));
         }
 
         LineDataSet set1 = new LineDataSet(yValues1, username + "'s record");
+        //initialize the graph legends
 
-
-
+        //add characteristics to the line graph
         set1.setFillAlpha(110);
         set1.setColor(Color.BLUE);
         set1.setLineWidth(2f);
         set1.setCircleHoleRadius(3f);
         //set1.set
-/*
-        ArrayList<Entry> yValues2 = new ArrayList<>();
-        yValues2.add(new Entry(0, 3f));
-        yValues2.add(new Entry(1, 5f));
-        yValues2.add(new Entry(2, 6f));
-        yValues2.add(new Entry(3, 11f));
-        yValues2.add(new Entry(4, 14f));
-        yValues2.add(new Entry(5, 16f));
-        LineDataSet set2 = new LineDataSet(yValues2, "Average record");
 
-        set2.setFillAlpha(110);
-        set2.setColor(Color.RED);
-        set2.setLineWidth(2f);
-        set2.setCircleHoleRadius(3f);
-        //set2.set
-*/
         ArrayList<ILineDataSet> dataSets = new ArrayList<>();
         dataSets.add(set1);
-    //    dataSets.add(set2);
 
         LineData data = new LineData(dataSets);
 
