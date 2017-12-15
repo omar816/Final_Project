@@ -56,8 +56,8 @@ public class TopicStats extends AppCompatActivity{
         yValues1.add(new Entry(4, 12f));
         yValues1.add(new Entry(5, 17f));*/
 
-        for(int i =0; i<=record.length; i++){
-            yValues1.add(new Entry(i,((int) record[1][i])));
+        for(int i =0; i<record[0].length; i++){
+            yValues1.add(new Entry(i+1,((int) record[1][i])));
         }
 
         LineDataSet set1 = new LineDataSet(yValues1, username + "'s record");
