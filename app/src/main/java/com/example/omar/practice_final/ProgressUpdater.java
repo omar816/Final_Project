@@ -2,10 +2,8 @@ package com.example.omar.practice_final;
 
 import android.widget.ProgressBar;
 
-/**
- * Created by andre on 14-Dec-2017.
- */
 
+// updates progress bar for individual topics
 public class ProgressUpdater {
 
     public ProgressUpdater(){
